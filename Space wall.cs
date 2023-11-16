@@ -9,8 +9,7 @@ public class Spacewall : MonoBehaviour
   private float OutOfBoundsDamageAmount = 3f;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
 // Find the PlayerHealth script in the scene
       PD = FindObjectOfType<PlayerHealth>();
 // Find the Enemy Health Script
@@ -26,8 +25,7 @@ public class Spacewall : MonoBehaviour
     }
 // if player collide with the space wall of death, kill the player, and thus reset the scene
     private void OnTriggerEnter2D(Collider2D col) {
-      if (col.gameObject.CompareTag("Player") && PD != null)
-      {
+      if (col.gameObject.CompareTag("Player") && PD != null) {
           Debug.Log("OutOfBounds");
           PD.PlayerDied();
       }

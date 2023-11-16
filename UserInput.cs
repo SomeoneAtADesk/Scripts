@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UserInput : MonoBehaviour
 {
+  // No idea what this does, this was from one of the totorials
+  // I beleive that this is used to get the controlls for movement
   public static UserInput instance;
 
   [HideInInspector] public Controls Controls;

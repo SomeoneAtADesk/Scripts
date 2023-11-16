@@ -29,8 +29,7 @@ public class PlayerAnimations : MonoBehaviour
       InputHorizontal = Input.GetAxis("Horizontal");
       if (InputHorizontal > 0 && !facingright) {
         Flip();
-      }
-      else if (InputHorizontal < 0 && facingright) {
+      } else if (InputHorizontal < 0 && facingright) {
         Flip();
       }
     }

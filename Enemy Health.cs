@@ -23,22 +23,22 @@ public class EnemyHealth : MonoBehaviour, IDamageable
   public bool doesExplode2;
 
 // Lobby Crystals to their respected level
-  public bool PurpleCrystal; // Hub
-  public bool RedCrystal; // Hub
-  public bool WhiteCrystal; // Hub
-  public bool GreenCrystal; // Hub
+  public bool PurpleCrystal; // In Hub
+  public bool RedCrystal; // In Hub
+  public bool WhiteCrystal; // In Hub
+  public bool GreenCrystal; // In Hub
 
-// what to kill
-  public bool PurpleKill; // Hub
-  public bool RedKill; // Hub
-  public bool WhiteKill; // Hub
-  public bool GreenKill; // Hub
+// what Crystal to kill once respected level is complete
+  public bool PurpleKill; // In Hub
+  public bool RedKill; // In Hub
+  public bool WhiteKill; // In Hub
+  public bool GreenKill; // In Hub
 
-// Level Crystals Back to the lobby
-  public bool PurpleCrystalHub; // Level
-  public bool RedCrystalHub; // Level
-  public bool WhiteCrystalHub; // Level
-  public bool GreenCrystalHub; // Level
+// In Level Crystals Back to the Hub
+  public bool PurpleCrystalHub; // In Level
+  public bool RedCrystalHub; // In Level
+  public bool WhiteCrystalHub; // In Level
+  public bool GreenCrystalHub; // In Level
 
   private void Awake() {
     CurrentHealth = MaxHealth;
@@ -48,19 +48,23 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     ST = FindObjectOfType<SceneTracker>().GetComponent<SceneTracker>();
 // Kills the Space crystal after the Space level has been complete
     if (ST.Space == true && PurpleKill) {
-      Die();
+      Invoke("Explode", 0.35f);
+      Invoke("Die", 0.35f);
     }
 // Kills the Green Crystal after the junge level has been complete
     if (ST.Jungle == true && GreenKill) {
-      Die();
+      Invoke("Explode", 0.35f);
+      Invoke("Die", 0.35f);
     }
 // Kills the White crystal after the Snow level has been complete
     if (ST.Snow == true && WhiteKill) {
-      Die();
+      Invoke("Explode", 0.35f);
+      Invoke("Die", 0.35f);
     }
 // Kills the Red crystal after hte volcano level has been complete
     if (ST.Fire == true && RedKill) {
-      Die();
+      Invoke("Explode", 0.35f);
+      Invoke("Die", 0.35f);
     }
   }
 // to call upon the damage variable you need to use iDamageable to damage the enemy
