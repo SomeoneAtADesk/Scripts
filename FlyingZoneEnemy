@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+//Script Taken from Unity Tutorial - https://www.youtube.com/watch?v=TIXY0TR7Z0g
+public class FlyingZoneEnemy : MonoBehaviour
+{
+    public float speed;
+    public bool chase = false;
+    public Transform startingpoint;
+    private GameObject player;
+
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player"); //Assign Player variable to Game Object that has the player tag (which is only the player)
+    }
+
+    void Update()
+    {
+        if(player == null) {
+            return; //If the player doesn't exist then return to start of function, preventing the Chase function from being called.
+        }
+        if(chase == true) {
+            Chase(); //If the chase bool is true, call the chase function.
+        } else {
+            ReturnStartPoint();
+        }
+        //Flip();
+    }
+    //The Chase Function
+    private void Chase() 
+    {
+       transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); 
+       //Moves the enemy's transform to the player transform position by our speed variable times time.
+    }
+    //OUT OF USE: The Flipping Sprite Function
+    /*private void Flip()
+    {
+        if (transform.position.x > player.transform.position.x) //Check to see if the player is left to the enemy.
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0); //Set's the rotation to 0, assuming the sprite is starting facing left.
+            //NOTE: Learn what Quaternion.Euler is as the tutorial just pulls this out of nowhere.
+        } else {
+            transform.rotation = Quaternion.Euler(0, 180, 0); 
+            //If the player isn't to the left of the enemy, then we know it's to the right. Fliping the sprite.
+        }
+    }*/
+    //The Out of Range Return to start Function
+    private void ReturnStartPoint()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, startingpoint.position, speed * Time.deltaTime);
+        //If this function is called, the enemy's transform moves back to the startingpoint's position, being it's starting point.
+    }
+}
