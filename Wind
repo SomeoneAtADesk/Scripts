@@ -1,0 +1,19 @@
+using UnityEngine;
+//Script written by ChatGPT
+public class Wind : MonoBehaviour
+{
+    public float windForce = 5f;
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+       //Check if the obkect in the wind zone has a RB2D
+       Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+        
+        if (rb != null)
+        {
+            Vector2 forceVector = (transform.right * -1) * windForce;
+            
+            rb.AddForce(forceVector, ForceMode2D.Force);
+        }
+    }
+}
